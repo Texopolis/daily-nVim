@@ -41,6 +41,9 @@ end
 --NeoTree
 keymap("n", "<leader>e", ":Neotree toggle reveal_force_cwd<CR>", opts("Toggle Neotree"))
 
+--Open lazyGit
+keymap("n", "<leader>gg", ":LazyGit<CR>", opts("Open LazyGit"))
+
 --Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts("Move window left"))
 keymap("n", "<C-j>", "<C-w>j", opts("Move window down"))

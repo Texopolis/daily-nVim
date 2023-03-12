@@ -98,6 +98,16 @@ require('lazy').setup({
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
 
+  {
+    -- Snippets
+    'rafamadriz/friendly-snippets'
+  },
+
+  {
+    --Add icons to LSP completions
+    'onsails/lspkind.nvim'
+  },
+
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',          opts = {} },
   {
@@ -177,6 +187,7 @@ require('lazy').setup({
     end,
   },
 
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -193,6 +204,10 @@ require('lazy').setup({
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   { import = 'custom.plugins' },
 }, {})
+
+
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -423,8 +438,7 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
-
+  tsserver = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -463,6 +477,7 @@ mason_lspconfig.setup_handlers {
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
+local lspkind = require('lspkind')
 
 luasnip.config.setup {}
 
@@ -503,6 +518,13 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol',       -- show only symbol annotations
+      maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+    })
+  }
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
