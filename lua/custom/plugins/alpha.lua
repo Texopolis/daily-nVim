@@ -34,12 +34,18 @@ return {
 			dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
 			dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 		}
-		local function footer()
-			return "not today asshole"
-		end
+		dashboard.section.footer.val = {
+			[[░░░░░░░░░░░░░░░░░]],
+			[[░░░░░░▄██▄░░░░░░░]],
+			[[░░░░▄██████▄░░░░░]],
+			[[░░░███▄██▄███░░░░]],
+			[[░░░░░▄▀▄▄▀▄░░░░░░]],
+			[[░░░░▀░▀░░▀░▀░░░░░]],
+			[[░░░░░░░░░░░░░░░░░]],
+		}
 
-		dashboard.section.footer.val = footer()
-
+		-- dashboard.section.footer.val = footer()
+		--
 		dashboard.section.footer.opts.hl = "Type"
 		dashboard.section.header.opts.hl = "Include"
 		dashboard.section.buttons.opts.hl = "Keyword"

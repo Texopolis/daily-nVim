@@ -1,6 +1,8 @@
 vim.opt.relativenumber = true
 vim.opt.number = true
 
+vim.diagnostic.config({ virtual_text = false })
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -91,12 +93,6 @@ keymap("t", "<Esc>", "<C-\\><C-n>")
 --UndoTree
 keymap("n", "<leader><F5>", "<cmd>UndotreeToggle<cr>", opts("Toggle UndoTree"))
 
--- Clear highlights
-keymap("n", "<leader>ch", "<cmd>nohlsearch<CR>", { silent = true, desc = "Clear highlights" })
-
--- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete!<CR>")
-
 --Git
 keymap("n", "<leader>gs", vim.cmd.Git, opts("Git Status"))
 
@@ -125,7 +121,7 @@ keymap("n", "<leader>d", "\"_d", opts("Delete into system clipboard"))
 keymap("v", "<leader>d", "\"_d", opts("Delete into system clipboard"))
 
 --Switch Projects
-keymap("n", "P", "<nop>")
+--keymap("n", "P", "<nop>")
 
 --Quickfix
 keymap("n", "<C-k>", "<cmd>cnext<cr>zz")      --??
@@ -135,3 +131,11 @@ keymap("n", "<leader>j>", "<cmd>lprev<CR>zz") --??
 
 --Search and Replace
 keymap("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>", opts("replace all words under cursor"))
+
+--Lsp diagnostics
+keymap('n', '<leader>d[', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { noremap = true, silent = true })
+keymap('n', '<leader>d]', '<cmd>Lspsaga diagnostic_jump_next<CR>', { noremap = true, silent = true })
+keymap('n', '<leader>dd', "<cmd>Lspsaga show_cursor_diagnostics<CR>", { noremap = true, silent = true })
+keymap('n', '<leader>dl', "<cmd>Lspsaga show_line_diagnostics<CR>", { noremap = true, silent = true })
+keymap('n', '<leader>db', "<cmd>Lspsaga show_buf_diagnostics<CR>", { noremap = true, silent = true })
+keymap('n', '<leader>o', "<cmd>Lspsaga outline<CR>", { noremap = true, silent = true })
