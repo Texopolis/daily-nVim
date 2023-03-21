@@ -208,7 +208,7 @@ require('lazy').setup({
 
 
 require("luasnip.loaders.from_vscode").lazy_load(
-'~/.vscode/extensions/dsznajder.es7-react-js-snippets-4.4.3/lib/snippets/generated.json')
+  '~/.vscode/extensions/dsznajder.es7-react-js-snippets-4.4.3/lib/snippets/generated.json')
 require("luasnip.loaders.from_snipmate").lazy_load()
 
 -- [[ Setting options ]]
@@ -541,7 +541,8 @@ cmp.setup({
 
       if cmp.visible() then
         cmp.select_next_item(select_opts)
-      elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        ---@diagnostic disable-next-line: param-type-mismatch, undefined-field
+      elseif col == 0 or vim.fn.getline("."):sub(col, col):match('%s') then
         fallback()
       else
         cmp.complete()
