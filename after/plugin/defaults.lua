@@ -73,7 +73,8 @@ keymap("v", "p", '"_dP', opts("paste"))
 
 --Lsp Format
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{async=true}<cr>", opts("FORMAT"))
-
+--Prettier Format
+keymap("n", "<leader>fp", "<cmd>Prettier<CR>", opts("[F]ormat [P]rettier"))
 --PLUGIN KEYBINDS--
 
 --Harpoon

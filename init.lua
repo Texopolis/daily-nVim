@@ -91,7 +91,13 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-
+  {
+    'jose-elias-alvarez/null-ls.nvim'
+  },
+  --prettier
+  {
+    'MunifTanjim/prettier.nvim'
+  },
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -453,6 +459,11 @@ local servers = {
 
 -- Setup neovim lua configuration
 require('neodev').setup()
+
+-- Setup astro LSP
+require 'lspconfig'.astro.setup {
+
+}
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
