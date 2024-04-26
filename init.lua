@@ -323,6 +323,9 @@ vim.o.termguicolors = true
 vim.keymap.set('i', 'jk', '<esc>')
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
+-- Open oil.nvim
+vim.keymap.set('n', '<leader>o', ':Oil<cr>', { desc = 'Open oil.nvim' })
+
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -344,6 +347,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- dismiss search highlight
+vim.keymap.set('n', '<leader>rh', ':nohlsearch<cr>', { desc = 'Dismiss search highlight' })
+
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
@@ -357,7 +363,7 @@ require('telescope').setup {
   },
 }
 
-require("oil").setup()
+require("oil").setup({ view_options = { show_hidden = true } })
 require("live-server").setup()
 
 -- Enable telescope fzf native, if installed
